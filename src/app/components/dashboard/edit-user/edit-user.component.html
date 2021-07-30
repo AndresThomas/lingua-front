@@ -1,0 +1,88 @@
+<mat-label>Edit</mat-label>
+<div class="mega" [formGroup]="form">
+    <div class="container">
+        <mat-form-field class="ancho" appearance="outline" color="primary">
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="firstName" autocomplete="off" value="{{user.first_name}}">
+            <mat-icon matSuffix style="color: black;" class="icon">mood-happy</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="ancho" appearance="outline" color="primary">
+            <mat-label> {{user.last_name}} </mat-label>
+            <input matInput formControlName="lastName" autocomplete="off">
+            <mat-icon matSuffix style="color: black;" class="icon">mood-happy</mat-icon>
+        </mat-form-field>
+        <mat-form-field (keypress)="keyPress($event)" class="ancho" appearance="outline" color="primary">
+            <mat-label>Phone number</mat-label>
+            <input matInput formControlName="phonenumber" autocomplete="off">
+            <mat-icon matSuffix style="color: black;" class="icon">phone</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="is_admin" class="ancho" appearance="fill">
+            <mat-label>Rol</mat-label>
+            <mat-select formControlName="animalControl" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let animal of animals" [value]="animal">
+                    {{animal.name}}
+                </mat-option>
+            </mat-select>
+
+
+        </mat-form-field>
+
+
+        <mat-form-field class="ancho" appearance="outline" color="primary">
+            <mat-label>user</mat-label>
+            <input matInput formControlName="username" autocomplete="off">
+            <mat-icon matSuffix>account_box</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="ancho" appearance="outline" color="primary">
+            <mat-label>password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field class="ancho" appearance="outline" color="primary">
+            <mat-label>Email</mat-label>
+            <input matInput type='email' formControlName="email" autocomplete="off">
+            <mat-icon matSuffix class="icon">mail</mat-icon>
+        </mat-form-field>
+
+        <br>
+
+    </div>
+    <div class="container2">
+        <h3>Classes</h3>
+        <div class="container3">
+            <ul *ngFor="let item of arr; let i = index">
+                <mat-form-field class="ancho2" appearance="outline" color="primary">
+                    <mat-label>Language</mat-label>
+                    <input matInput type='email' autocomplete="off" [value]="item.language">
+                    <mat-icon matSuffix class="icon"></mat-icon>
+                </mat-form-field>
+                <mat-form-field class="ancho3" appearance="outline" color="primary">
+                    <mat-label>Teacher</mat-label>
+                    <input matInput type='email' autocomplete="off" [value]="item.value">
+                    <mat-icon matSuffix class="icon"></mat-icon>
+                </mat-form-field>
+            </ul>
+        </div>
+        <mat-form-field class="ancho" appearance="outline" color="primary">
+            <mat-label>Level</mat-label>
+            <input matInput type='email' formControlName="level" autocomplete="off">
+            <mat-icon matSuffix class="icon"></mat-icon>
+        </mat-form-field>
+        <mat-form-field class="ancho" appearance="outline" color="primary">
+            <mat-label>{{assignament}}</mat-label>
+            <input matInput type='email' formControlName="people" autocomplete="off">
+            <mat-icon matSuffix class="icon"></mat-icon>
+        </mat-form-field>
+        <mat-form-field class="ancho" appearance="outline" color="primary">
+            <mat-label>Groups</mat-label>
+            <input matInput type='email' formControlName="groups" autocomplete="off">
+            <mat-icon matSuffix class="icon">mail</mat-icon>
+        </mat-form-field>
+    </div>
+</div>
+<button class="btn" (click)="save(form.value)" mat-flat-button [disabled]="form.invalid" color="warn">Register</button>

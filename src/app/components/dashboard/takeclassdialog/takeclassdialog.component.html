@@ -1,0 +1,78 @@
+  <div class="mega">
+  <div class="container">
+    <mat-toolbar >
+      <h2 mat-dialog-title>Students</h2>
+    </mat-toolbar>
+    <mat-form-field class="table" appearance="standard">
+      <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input autocomplete="off">
+      </mat-form-field>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table" matSort>
+      <ng-container matColumnDef="level">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="level"> username </th>
+        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="full name">
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.first_name + element.last_name}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" style="text-align: right;">
+          
+          <button mat-icon-button color="primary" (click)="acept(element)"
+            aria-label="Example icon button with a home icon">
+            <mat-icon>check_circle</mat-icon>
+          </button>
+          
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+  <mat-divider [vertical]='true'></mat-divider>
+  
+  <div class="container2">
+    <mat-toolbar class="toolbar">
+      <h2 mat-dialog-title>Groups</h2>
+    </mat-toolbar>
+    <mat-form-field class="table2" appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="groups" class="mat-elevation-z8 table2" matSort>
+      
+      <ng-container matColumnDef="level">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="level"> username </th>
+        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="full name">
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.first_name + element.last_name}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" style="text-align: right;">
+          <button mat-icon-button color="primary" (click)="acept(element)"
+            aria-label="Example icon button with a home icon">
+            <mat-icon>edit</mat-icon>
+          </button>
+          
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  
+
+  </div>
+</div>

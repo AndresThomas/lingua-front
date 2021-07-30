@@ -1,0 +1,21 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .footer{
+    flex: 1 100%;
+    background: black;
+    height: 8%;
+  }
+.container{
+  align-items: center;
+  display: inline-flex;
+  width: 50%;
+}
+.contact{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.icon{
+  color: white;
+}

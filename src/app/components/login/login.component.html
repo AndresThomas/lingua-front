@@ -1,0 +1,26 @@
+<div class="body" >
+    <div class="login">
+        <mat-spinner color="accent" class="spinner" *ngIf="loading"></mat-spinner>
+
+        <form [formGroup]="form" *ngIf="!loading" (ngSubmit)="login()" >
+            <img src="../../../assets/img/a.png" width="50%">
+            <mat-form-field class="ancho" appearance="outline" color="primary" style="color: white;">
+                <mat-label style="color: whitesmoke;">user</mat-label>
+                <input matInput formControlName="user" autocomplete="off">
+                <mat-icon matSuffix>account_box</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="ancho" appearance="outline" color="primary" style="color: white;">
+                <mat-label style="color: whitesmoke;">password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <br>
+            <button class="ancho btn" mat-flat-button [disabled]="form.invalid" color="warn" >Login</button>
+            <br><br>
+        </form>
+
+    </div>
+
+</div>

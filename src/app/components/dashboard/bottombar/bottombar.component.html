@@ -1,0 +1,19 @@
+<mat-toolbar class="primary footer" color="primary">
+  <span style="font-size: small;">Copyright Lingua Zone</span>
+  <span class="example-spacer"></span>
+
+  <div class="container">
+    <button mat-icon-button class="contact" (click)="goToLink()">
+      <mat-icon class="icon">facebook</mat-icon>
+    </button>
+    <button mat-icon-button class="contact">
+      <mat-icon class="icon" #tooltip="matTooltip" matTooltip="961 124 8894" [matTooltipPosition]="position.value"
+        matTooltipHideDelay="10">phone</mat-icon>
+    </button>
+
+    <button mat-icon-button class="contact">
+      <mat-icon class="icon">mail</mat-icon>
+    </button>
+  </div>
+  <span class="example-spacer"></span>
+</mat-toolbar>

@@ -1,0 +1,33 @@
+.mega{
+    display: flex;
+}
+.container{
+    width: 50%;
+    height: 100%;
+    text-align: left;
+    overflow:hidden;
+}
+.container2{
+    width: 50%;
+    height: 100%;
+    text-align: left;
+    overflow:hidden;    
+}
+.container3{
+    width: 100%;
+    height: 50%;
+    border-radius: 3%;
+    border-color: gray;
+    overflow: auto;
+}
+
+.ancho{
+    width: 90%;
+}
+.ancho2{
+    width: 45%;
+}
+.ancho3{
+    width: 45%;
+    margin-left: 2%;
+}

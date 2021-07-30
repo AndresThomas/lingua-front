@@ -1,0 +1,23 @@
+.body{
+    display:flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    background-image: url('../../../../assets/img/body.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.login{
+    width: 100%;
+    max-width: 330px;
+    text-align: center;
+    background-color:#000000cc;
+    border-radius: 7%;
+}
+.ancho{
+    width:80%;
+}
+.btn{
+    height: 50px;
+}
