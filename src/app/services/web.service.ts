@@ -9,7 +9,7 @@ import { User } from '../interfaces/interfaces';
 
 
 export class WebService {
-  link = 'http://127.0.0.1:8000/';
+  link = 'https://lzn.herokuapp.com/';
   books = '';
   classLink='';
   list = '';
