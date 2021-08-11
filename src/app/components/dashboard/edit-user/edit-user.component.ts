@@ -21,7 +21,7 @@ export class EditUserComponent implements OnInit {
     {name: 'Student'},
     {name: 'Teacher'},
   ];
-  form: FormGroup;
+  form!: FormGroup;
   is_admin: boolean;
   hide = true;
   user !:User;
@@ -37,23 +37,47 @@ export class EditUserComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public id: any,
   ) { 
     this.user = this.id.user;
-    this.arr = Object.keys(this.id.user.lista.languages).map(key => ({ language: key, value: this.id.user.lista.languages[key] }));
+    try{
+      this.arr = Object.keys(this.id.user.lista.languages).map(key => ({ language: key, value: this.id.user.lista.languages[key] }));
     console.log(this.arr)
-    this.form = this.fb.group({
-      username: [this.user.username, Validators.required],
-      password: [this.user.password, Validators.required],
-      email: [this.user.email,Validators.compose([Validators.email,Validators.required])],
-      firstName: [this.user.first_name, Validators.required],
-      lastName: [this.user.last_name, Validators.required],
-      phonenumber:[this.user.phone_number,Validators.compose(
-        [Validators.maxLength(10),Validators.minLength(10),Validators.required,])],
-      animalControl: ['', Validators.required],
-      form:[this.user.lista.form, Validators.required],
-      level: [this.user.lista.levels, Validators.required],
-      languages: [this.arr[0], Validators.required],
-      people:[this.user.lista.people, Validators.required],
-      groups :[this.user.lista.groups, Validators.required]
-    })
+    
+    
+    }catch{
+      console.log('somethings wrong')
+    }
+    if(this.arr != undefined){
+      this.form = this.fb.group({
+        username: [this.user.username, Validators.required],
+        password: [this.user.password, Validators.required],
+        email: [this.user.email,Validators.compose([Validators.email,Validators.required])],
+        firstName: [this.user.first_name, Validators.required],
+        lastName: [this.user.last_name, Validators.required],
+        phonenumber:[this.user.phone_number,Validators.compose(
+          [Validators.maxLength(10),Validators.minLength(10),Validators.required,])],
+        animalControl: ['', Validators.required],
+        form:[this.user.lista.form, Validators.required],
+        level: [this.user.lista.levels, Validators.required],
+        languages: [this.arr[0] , Validators.required],
+        people:[this.user.lista.people, Validators.required],
+        groups :[this.user.lista.groups, Validators.required]
+      })
+    }else{
+      this.form = this.fb.group({
+        username: [this.user.username, Validators.required],
+        password: [this.user.password, Validators.required],
+        email: [this.user.email,Validators.compose([Validators.email,Validators.required])],
+        firstName: [this.user.first_name, Validators.required],
+        lastName: [this.user.last_name, Validators.required],
+        phonenumber:[this.user.phone_number,Validators.compose(
+          [Validators.maxLength(10),Validators.minLength(10),Validators.required,])],
+        animalControl: ['', Validators.required],
+        form:[this.user.lista.form, Validators.required],
+        level: [this.user.lista.levels, Validators.required],
+        languages: ['' , Validators.required],
+        people:[this.user.lista.people, Validators.required],
+        groups :[this.user.lista.groups, Validators.required]
+      })
+    }
     this.is_admin = this.cookie.get('rol') == 'admin';
 
     console.log(this.id.user)
