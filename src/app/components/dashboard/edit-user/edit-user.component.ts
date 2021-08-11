@@ -48,6 +48,7 @@ export class EditUserComponent implements OnInit {
       phonenumber:[this.user.phone_number,Validators.compose(
         [Validators.maxLength(10),Validators.minLength(10),Validators.required,])],
       animalControl: ['', Validators.required],
+      form:[this.user.lista.form, Validators.required],
       level: [this.user.lista.levels, Validators.required],
       languages: [this.arr[0], Validators.required],
       people:[this.user.lista.people, Validators.required],
@@ -88,7 +89,8 @@ export class EditUserComponent implements OnInit {
         'languages':data.languages,
         'levels':data.level,
         'people':data.people,
-        'groups':data.groups
+        'groups':data.groups,
+        'form': data.form
       }
     }
     this.request.updateUser(user,this.id.id).subscribe(
