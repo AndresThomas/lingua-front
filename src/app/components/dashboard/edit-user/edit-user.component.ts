@@ -73,7 +73,7 @@ export class EditUserComponent implements OnInit {
         animalControl: ['', Validators.required],
         form:[this.user.lista.form, Validators.required],
         level: [this.user.lista.levels, Validators.required],
-        languages: ['' , Validators.required],
+        languages: ['' ],
         people:[this.user.lista.people, Validators.required],
         groups :[this.user.lista.groups, Validators.required]
       })
