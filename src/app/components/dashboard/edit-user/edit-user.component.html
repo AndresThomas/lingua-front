@@ -55,34 +55,33 @@
     <div class="container2">
         <h3>Classes</h3>
         <div class="container3">
-            <ul *ngFor="let item of arr; let i = index">
-                <mat-form-field class="ancho2" appearance="outline" color="primary">
-                    <mat-label>Language</mat-label>
-                    <input matInput type='email' autocomplete="off" [value]="item.language">
-                    <mat-icon matSuffix class="icon"></mat-icon>
-                </mat-form-field>
-                <mat-form-field class="ancho3" appearance="outline" color="primary">
-                    <mat-label>Teacher</mat-label>
-                    <input matInput type='email' autocomplete="off" [value]="item.value">
-                    <mat-icon matSuffix class="icon"></mat-icon>
-                </mat-form-field>
-            </ul>
+            <mat-form-field appearance="fill">
+                <mat-label>Languages</mat-label>
+                <mat-select formControlName="toppings" multiple>
+
+                    <mat-option *ngFor="let topping of toppingList" [value]="topping">
+                        {{topping.language+' -level- '+topping.level+' - '+topping.teacher }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+        <div class="container3">
+            <mat-form-field appearance="fill" >
+                <mat-label>List</mat-label>
+                <mat-select formControlName="people" multiple>
+
+                    <mat-option *ngFor="let person of peopleList" [value]="person">{{person.first_name+' '+person.last_name+'
+                        '+'-'+person.username }}</mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
         <mat-form-field class="ancho" appearance="outline" color="primary">
             <mat-label>Form</mat-label>
             <input matInput type='text' formControlName="form" autocomplete="off">
             <mat-icon matSuffix class="icon"></mat-icon>
         </mat-form-field>
-        <mat-form-field class="ancho" appearance="outline" color="primary">
-            <mat-label>Level</mat-label>
-            <input matInput type='email' formControlName="level" autocomplete="off">
-            <mat-icon matSuffix class="icon"></mat-icon>
-        </mat-form-field>
-        <mat-form-field class="ancho" appearance="outline" color="primary">
-            <mat-label>{{assignament}}</mat-label>
-            <input matInput type='email' formControlName="people" autocomplete="off">
-            <mat-icon matSuffix class="icon"></mat-icon>
-        </mat-form-field>
+
         <mat-form-field class="ancho" appearance="outline" color="primary">
             <mat-label>Groups</mat-label>
             <input matInput type='email' formControlName="groups" autocomplete="off">

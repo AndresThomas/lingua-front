@@ -41,14 +41,7 @@ export class DashboardComponent implements OnInit {
     
   }
   getMyBooks() {
-    this.http.getBooks().subscribe(
-      result => {
-        console.log(result)
-      },
-      error => {
-        console.log(error)
-      }
-    )
+    
   }
   getList() {
     const dialogref = this.matDialog.open(ListDialogComponent,
@@ -63,9 +56,7 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  addUser() {
-
-  }
+  
 
   ngOnInit(): void {
     this.message = this.cookie.get('rol').toLowerCase();

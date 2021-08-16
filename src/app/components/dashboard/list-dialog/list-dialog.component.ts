@@ -39,7 +39,7 @@ export class ListDialogComponent implements OnInit {
       {
         width: '30%',
         height: '30%',
-        data: { id: id }
+        data: { id: id, type:'user'  }
       });
       dialogref.afterClosed().subscribe(
         result=>{
@@ -85,7 +85,6 @@ export class ListDialogComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.students_list);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
       },
       error => {
         console.log(error)

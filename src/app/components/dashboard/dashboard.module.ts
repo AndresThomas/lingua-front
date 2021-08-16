@@ -12,11 +12,13 @@ import { DetailDialogComponent } from './detail-dialog/detail-dialog.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { TakeclassdialogComponent } from './takeclassdialog/takeclassdialog.component';
 import { ClasschooserComponent } from './classchooser/classchooser.component';
+import { LanguagesComponent } from './languages/languages.component';
+import { UpdatelanguagedialogComponent } from './updatelanguagedialog/updatelanguagedialog.component';
 
 
 @NgModule({
   declarations: [DashboardComponent, NavbarComponent,RegisterComponent,
-     BottombarComponent, ListDialogComponent, DetailDialogComponent, EditUserComponent, TakeclassdialogComponent, ClasschooserComponent],
+     BottombarComponent, ListDialogComponent, DetailDialogComponent, EditUserComponent, TakeclassdialogComponent, ClasschooserComponent, LanguagesComponent, UpdatelanguagedialogComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
