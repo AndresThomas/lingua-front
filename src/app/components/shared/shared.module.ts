@@ -18,6 +18,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [],
@@ -38,7 +39,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatSelectModule,
     MatDialogModule,
     MatPaginatorModule,
-    MatDividerModule
+    MatDividerModule,
+    MatListModule
     
   ],
   exports:[
@@ -57,7 +59,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatSelectModule,
     MatDialogModule,
     MatPaginatorModule,
-    MatDividerModule
+    MatDividerModule,
+    MatListModule
   ]
 })
 export class SharedModule { }

@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
         this.rol = response;
         this.request.receiveRol(this.rol.rol);
         this.cookie.set('rol',this.rol.rol+'');
+        this.cookie.set('id',this.rol.user_id);
         this.cookie.set('username',username);
         localStorage.setItem("username",username);
         this.fakeLoading();

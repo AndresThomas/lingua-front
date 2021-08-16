@@ -1,1 +1,5 @@
-<p>classchooser works!</p>
+<mat-selection-list #shoes [multiple]="false">
+    <mat-list-option *ngFor="let language of data" [value]="language">
+      {{language.language+" - level:"+language.level+" "+language.teacher}}
+    </mat-list-option>
+  </mat-selection-list>

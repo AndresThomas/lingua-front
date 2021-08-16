@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Language } from 'src/app/interfaces/interfaces';
 
 @Component({
   selector: 'app-classchooser',
@@ -9,7 +10,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ClasschooserComponent implements OnInit {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: Language[],
   ) { }
 
   ngOnInit(): void {
