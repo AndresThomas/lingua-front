@@ -40,7 +40,16 @@ export class LanguagesComponent implements OnInit {
       language: ['', Validators.required],
       level: ['', Validators.required],
       link: ['', Validators.required],
-    })
+    });
+    this.request.getUsers(this.cookie.get('rol'), this.cookie.get('user')).subscribe(
+      list => {
+        for (let i = 0; i < list.length; i++) {
+          if (list[i].rol == 'teacher' || list[i].rol == 'Teacher')
+            this.toppingList.push(list[i]);
+        }
+
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -61,15 +70,7 @@ export class LanguagesComponent implements OnInit {
         console.log(error)
       }
     );
-    this.request.getUsers(this.cookie.get('rol'), this.cookie.get('user')).subscribe(
-      list => {
-        for (let i = 0; i < list.length; i++) {
-          if (list[i].rol == 'teacher' || list[i].rol == 'Teacher')
-            this.toppingList.push(list[i]);
-        }
-
-      }
-    )
+    
 
   }
 
