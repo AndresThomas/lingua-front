@@ -17,6 +17,7 @@ export class EditUserComponent implements OnInit {
   people = new FormControl();
   peopleList: User[] = [];
   toppingList: Language[] = [];
+  
   animals: Animal[] = [
     { name: 'student' },
     { name: 'teacher' },
@@ -48,20 +49,6 @@ export class EditUserComponent implements OnInit {
       }
     )
     
-    this.form = this.fb.group({
-      username: [this.user.username, Validators.required],
-      password: [this.user.password, Validators.required],
-      email: [this.user.email, Validators.compose([Validators.email, Validators.required])],
-      firstName: [this.user.first_name, Validators.required],
-      lastName: [this.user.last_name, Validators.required],
-      phonenumber: [this.user.phone_number, Validators.compose(
-        [Validators.maxLength(10), Validators.minLength(10), Validators.required,])],
-      animalControl: ['', Validators.required],
-      toppings: ['',],
-      people: ['',],
-      form: [this.user.lista.form, Validators.required],
-      groups: [this.user.lista.groups, Validators.required]
-    })
     this.is_admin = this.cookie.get('rol') == 'admin';
 
     console.log(this.id.user)
@@ -114,7 +101,20 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.last_name_control =  new FormControl(this.user.last_name, Validators.required);
+    this.form = this.fb.group({
+      username: [this.user.username, Validators.required],
+      password: [this.user.password, Validators.required],
+      email: [this.user.email, Validators.compose([Validators.email, Validators.required])],
+      firstName: [this.user.first_name, Validators.required],
+      lastName: [this.user.last_name, Validators.required],
+      phonenumber: [this.user.phone_number, Validators.compose(
+        [Validators.maxLength(10), Validators.minLength(10), Validators.required,])],
+      animalControl: ['', Validators.required],
+      toppings: ['',],
+      people: ['',],
+      form: [this.user.lista.form, Validators.required],
+      groups: [this.user.lista.groups, Validators.required]
+    });
   }
 
 }

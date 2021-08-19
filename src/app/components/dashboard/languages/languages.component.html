@@ -49,11 +49,12 @@
         </div>
         <div class="form">
             <form [formGroup]="form" (ngSubmit)="post()" >
-            <mat-form-field class="ancho" appearance="outline" color="primary">
-                <mat-label>Teacher</mat-label>
-                <input matInput type='text' autocomplete="off" formControlName="teacher">
-                <mat-icon matSuffix class="icon"  ></mat-icon>
-            </mat-form-field><br>
+              <mat-form-field appearance="fill" class ="ancho">
+                <mat-label>Teachers</mat-label>
+                <mat-select [formControl]="toppings" >
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping.first_name+" "+topping.last_name}}</mat-option>
+                </mat-select>
+              </mat-form-field> <br>
             <mat-form-field class="ancho" appearance="outline" color="primary">
                 <mat-label>Language</mat-label>
                 <input matInput type='text' autocomplete="off" formControlName="language" >
@@ -70,11 +71,6 @@
               <mat-icon matSuffix class="icon"></mat-icon>
           </mat-form-field>
             <br>
-            <mat-form-field class="ancho" appearance="outline" color="primary">
-              <mat-label>Username</mat-label>
-              <input matInput type='text' autocomplete="off" formControlName="usn" >
-              <mat-icon matSuffix class="icon"></mat-icon>
-          </mat-form-field>
             <button class="ancho btn" mat-flat-button [disabled]="form.invalid" color="warn" >Save</button>
         </form>
         </div>
