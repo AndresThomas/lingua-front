@@ -39,7 +39,7 @@ export class TakeclassdialogComponent implements OnInit {
         for (let index = 0; index < result.length; index++) {
           //dentro del result puede venir el propio usuario que solicita la informacion
           //esta parte es un filtro manual
-          if (result[index].username != this.cookie.get('username') && result[index].rol.toLowerCase() != this.cookie.get('rol')) {
+          if (result[index].username != this.cookie.get('username') && result[index].rol.toLowerCase() != this.cookie.get('rol') && result[index].lista != '{language:example}') {
             let arr = [];
             let lista: User[] = [];
             try {
@@ -99,8 +99,10 @@ export class TakeclassdialogComponent implements OnInit {
           arr = Object.entries(response.lista.classes);//parece ser un array
           for (let ind = 0; ind < arr.length; ind++) {
             let language: Language = <Language>arr[ind][1];
-
-            if (language.teacher == user.first_name + " " + user.last_name)
+            
+            if (language.teacher == user.first_name + " " + user.last_name && this.cookie.get('rol')=='student')
+              lang.push(language);
+            else
               lang.push(language);
           }
           if (lang.length > 1) {
@@ -115,10 +117,12 @@ export class TakeclassdialogComponent implements OnInit {
           }
           if (lang.length == 1) {
             window.open(response.lista.form, "_blank");
-            let lang: Language = <Language>response.lista.classes;
-            window.open(lang.link, "_blank");
+            let lang2:Language =<Language> response.lista.classes[0];
+            console.log(response.lista.classes[0].link);
+            window.open(lang2.link, "_blank");
 
           } else {
+            console.log(lang)
             this._snackBar.open('This student isnt registered a class', '', {
               duration: 5000,
               horizontalPosition: 'center',
