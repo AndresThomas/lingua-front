@@ -87,6 +87,10 @@ export class TakeclassdialogComponent implements OnInit {
     }
   }
 
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
+
   acept(user: User) {
 
     let lang: Language[] = [];
@@ -94,7 +98,7 @@ export class TakeclassdialogComponent implements OnInit {
     let id = this.cookie.get('id');
     var y: number = +id;
     this.http.getUser(y).subscribe(
-      response => {
+      async response => {
         try {
           arr = Object.entries(response.lista.classes);//parece ser un array
           for (let ind = 0; ind < arr.length; ind++) {
@@ -118,7 +122,10 @@ export class TakeclassdialogComponent implements OnInit {
           if (lang.length == 1) {
             window.open(response.lista.form, "_blank");
             let lang2:Language =<Language> response.lista.classes[0];
+            await this.delay(1000);
             console.log(response.lista.classes[0].link);
+            console.log(lang2)
+            
             window.open(lang2.link, "_blank");
 
           } else {
