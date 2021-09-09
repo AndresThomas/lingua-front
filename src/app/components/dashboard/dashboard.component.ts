@@ -5,6 +5,7 @@ import { WebService } from 'src/app/services/web.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ListDialogComponent } from './list-dialog/list-dialog.component';
 import { TakeclassdialogComponent } from './takeclassdialog/takeclassdialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class DashboardComponent implements OnInit {
     private http: WebService,
     private cookie: CookieService,
     public matDialog: MatDialog,
+    private _snackBar: MatSnackBar,
   ) { }
 
   getInClass() {
@@ -41,7 +43,22 @@ export class DashboardComponent implements OnInit {
     
   }
   getMyBooks() {
-    
+    this.http.getUser(this.cookie.get('id')).subscribe(
+      request=>{
+        if(request.lista.groups != undefined){
+          window.open(request.lista.groups,"_blank");
+        }else{
+          this._snackBar.open('This person dont have a payment link', '', {
+            duration: 5000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom'
+          });
+        }
+      }
+      ,error=>{
+        console.log(error)
+      }
+    )
   }
   getList() {
     const dialogref = this.matDialog.open(ListDialogComponent,

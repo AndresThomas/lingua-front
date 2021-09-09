@@ -24,7 +24,7 @@ export class WebService {
   postLogin(data: any) { return this.http.post(this.link+'login/', data); }
   postRegistro(data: any) { return this.http.post(this.link + 'register/', data); }
   receiveRol(rol:string){this.messageSource.next(rol)}
-  postLanguage(language:string,teacher:string,level:string,link:string,usn:string){return this.http.post(this.link+'languages/',{language,teacher,level,link,usn});}
+  postLanguage(language:string,teacher:string,level:string,/*link:string,*/usn:string){return this.http.post(this.link+'languages/',{language,teacher,level,/*link*/usn});}
   /**********************************************/
     getLink(){return this.link;}
   getBooks(){

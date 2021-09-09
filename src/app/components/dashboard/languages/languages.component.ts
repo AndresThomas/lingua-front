@@ -39,7 +39,7 @@ export class LanguagesComponent implements OnInit {
     this.form = this.fb.group({
       language: ['', Validators.required],
       level: ['', Validators.required],
-      link: ['', Validators.required],
+      //link: ['', Validators.required],
     });
     this.request.getUsers(this.cookie.get('rol'), this.cookie.get('user')).subscribe(
       list => {
@@ -89,7 +89,7 @@ export class LanguagesComponent implements OnInit {
   post() {
     console.log(this.form)
     console.log(this.toppings.value)
-    this.request.postLanguage(this.form.value.language, this.toppings.value.first_name+" "+this.toppings.value.last_name, this.form.value.level, this.form.value.link, this.toppings.value.username).subscribe(
+    this.request.postLanguage(this.form.value.language, this.toppings.value.first_name+" "+this.toppings.value.last_name, this.form.value.level, /*this.form.value.link,*/ this.toppings.value.username).subscribe(
       response => {
         console.log(response);
         this._snackBar.open('Saved successfully', '', {
