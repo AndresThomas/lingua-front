@@ -5,7 +5,7 @@ import { WebService } from 'src/app/services/web.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CookieService } from 'ngx-cookie-service';
 import { Animal } from '../../../interfaces/Animal';
-import { Language, User } from 'src/app/interfaces/interfaces';
+import { Language, User,groups } from 'src/app/interfaces/interfaces';
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
@@ -14,9 +14,11 @@ import { Language, User } from 'src/app/interfaces/interfaces';
 export class EditUserComponent implements OnInit {
   animalControl !: FormControl;
   toppings = new FormControl();
+  groups = new FormControl();
   people = new FormControl();
   peopleList: User[] = [];
   toppingList: Language[] = [];
+  groupList: groups[]=[];
   
   animals: Animal[] = [
     { name: 'student' },
@@ -101,6 +103,7 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.form = this.fb.group({
       username: [this.user.username, Validators.required],
       password: [this.user.password, Validators.required],
@@ -113,7 +116,8 @@ export class EditUserComponent implements OnInit {
       toppings: ['',],
       people: ['',],
       form: [this.user.lista.form, Validators.required],
-      groups: [this.user.lista.groups, Validators.required]
+      groups: [this.user.lista.groups, Validators.required],
+      pay:['',]
     });
   }
 

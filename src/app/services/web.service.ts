@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {  HttpClient, HttpParams  } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Language, User } from '../interfaces/interfaces';
+import { Language, User, groups } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,10 @@ export class WebService {
   getList(){
     return this.http.get(this.link);
   }
-
+  getGroups(){return this.http.get<groups[]>(this.link+'groups')}
+  getGroup(id:any){return this.http.get<groups>(this.link+'groups/'+id+'/')}
+  postGroup(link_clases:string,name:string,teacher:User,lista_alumnos:string){return this.http.post(this.link+'groups/',{link_clases,name,teacher,lista_alumnos})}
+  putGroup(id:any,group:groups){return this.http.put(this.link+"groups/get/"+id+"/",group);}
   getUsers(rol:string,user:string) {
     let params = new HttpParams();
     params= params.append("rol",rol);
@@ -63,5 +66,9 @@ export class WebService {
 
   deleteLanguage(id:number){
     return this.http.delete(this.link+"languages/get/"+id+"/");
+  }
+
+  deleteGroup(id:number){
+    return this.http.delete(this.link+"groups/get/"+id+"/");
   }
 }

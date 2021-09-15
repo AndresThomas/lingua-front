@@ -22,26 +22,40 @@ export class DetailDialogComponent implements OnInit {
   deleteUser(){
     console.log(this.data)
     if(this.data.type == 'user'){
+      console.log('delete user')
       this.http.deleteUser(this.data.id).subscribe(
         result=>{
-          this.message('The user was modified successfully');
+          this.message('The user was deleted successfully');
           this.dialogref.close();
         },error=>{
-          this.message('The user wasnt modified successfully');
+          this.message('The user wasnt deleted successfully');
           console.log(error)
         }
       );
-    }else{
+    }if(this.data.type == 'language'){
+      console.log('delete language')
       this.http.deleteLanguage(this.data.id).subscribe(
         result=>{
-          this.message('The language was modified successfully');
+          this.message('The language was deleted successfully');
           this.dialogref.close();
         },error=>{
-          this.message('The user wasnt modified successfully');
+          this.message('The user wasnt deleted successfully');
+          console.log(error)
+        }
+      );
+    }if(this.data.type == 'group'){
+      console.log('delete group')
+      this.http.deleteGroup(this.data.id).subscribe(
+        result=>{
+          this.message('The group was deleted successfully');
+          this.dialogref.close();
+        },error=>{
+          this.message('The user wasnt deleted successfully');
           console.log(error)
         }
       );
     }
+
   }
   message(message:string){
     this._snackBar.open(message, '', {

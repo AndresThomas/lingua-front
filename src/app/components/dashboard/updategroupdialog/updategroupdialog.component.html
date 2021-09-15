@@ -1,0 +1,32 @@
+<div class="container">
+    <h2>Edit a group</h2>
+    <form [formGroup]="form" (ngSubmit)="post()" >
+      <mat-form-field appearance="fill" class="ancho">
+        <mat-label>Teacher</mat-label>
+        <mat-select [formControl]="toppings" [(value)]="selectedFood" [placeholder]="selectedFood">
+          <mat-option></mat-option>
+          <mat-option [value]="option" *ngFor="let option of toppingList">{{ option.first_name+" "+option.last_name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+        <br>
+        <mat-form-field class="ancho" appearance="outline" color="primary">
+            <mat-label>Info</mat-label>
+            <input matInput type='text' autocomplete="off" formControlName="name" >
+            <mat-icon matSuffix class="icon"></mat-icon>
+        </mat-form-field><br>
+        <mat-form-field class="ancho" appearance="outline" color="primary">
+          <mat-label>Link</mat-label>
+          <input matInput type='text' autocomplete="off" formControlName="link" >
+          <mat-icon matSuffix class="icon"></mat-icon>
+      </mat-form-field><br>
+      <mat-form-field appearance="fill" class="ancho">
+        <mat-label>Students</mat-label>
+        <mat-select [formControl]="toppings2" [(value)]="selectedFood2" [placeholder]="selectedFood2" multiple>
+          <mat-option></mat-option>
+          <mat-option [value]="option" *ngFor="let option of toppingList2">{{ option.first_name+" "+option.last_name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+        <br>
+        <button class="ancho btn" mat-flat-button [disabled]="form.invalid" color="warn" >Save</button>
+    </form>
+</div>

@@ -77,6 +77,16 @@
                 </mat-select>
             </mat-form-field>
         </div>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Groups</mat-label>
+            <mat-select formControlName="groups" multiple>
+
+                <mat-option *ngFor="let g of groupList" [value]="g">
+                    {{g.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
         <mat-form-field class="ancho" appearance="outline" color="primary">
             <mat-label>Form</mat-label>
             <input matInput type='text' formControlName="form" autocomplete="off">
@@ -85,7 +95,7 @@
 
         <mat-form-field class="ancho" appearance="outline" color="primary">
             <mat-label>Payment Link</mat-label>
-            <input matInput type='email' formControlName="groups" autocomplete="off">
+            <input matInput type='email' formControlName="pay" autocomplete="off">
             <mat-icon matSuffix class="icon">mail</mat-icon>
         </mat-form-field>
     </div>

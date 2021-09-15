@@ -14,11 +14,13 @@ import { TakeclassdialogComponent } from './takeclassdialog/takeclassdialog.comp
 import { ClasschooserComponent } from './classchooser/classchooser.component';
 import { LanguagesComponent } from './languages/languages.component';
 import { UpdatelanguagedialogComponent } from './updatelanguagedialog/updatelanguagedialog.component';
+import { GroupsComponent } from './groups/groups.component';
+import { UpdategroupdialogComponent } from './updategroupdialog/updategroupdialog.component';
 
 
 @NgModule({
   declarations: [DashboardComponent, NavbarComponent,RegisterComponent,
-     BottombarComponent, ListDialogComponent, DetailDialogComponent, EditUserComponent, TakeclassdialogComponent, ClasschooserComponent, LanguagesComponent, UpdatelanguagedialogComponent],
+     BottombarComponent, ListDialogComponent, DetailDialogComponent, EditUserComponent, TakeclassdialogComponent, ClasschooserComponent, LanguagesComponent, UpdatelanguagedialogComponent, GroupsComponent, UpdategroupdialogComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

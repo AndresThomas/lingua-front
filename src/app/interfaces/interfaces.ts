@@ -20,6 +20,20 @@ export class User {
     }
 }
 
+export class groups{
+    public name :string;
+    public teacher :string;
+    public link_clases :string;
+    public lista_alumnos :string;
+
+    constructor(name :string,teacher :string,link_clases :string,lista_alumnos :string){
+        this.name= name;
+        this.link_clases = link_clases;
+        this.teacher = teacher;
+        this.lista_alumnos = lista_alumnos;
+    }
+}
+
 export class Language {
     public language: string;
     public teacher: string;
