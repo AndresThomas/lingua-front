@@ -29,7 +29,7 @@ export class UpdategroupdialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public id: any,
     public dialogref: MatDialogRef<UpdategroupdialogComponent>,
   ) {
-    console.log(this.id.group[0], 'print group')
+    //console.log(this.id.group[0], 'print group')/
     this.form = this.fb.group({
       link: [this.id.group[0].link_clases, Validators.required],
       name: [this.id.group[0].name, Validators.required],      
@@ -56,8 +56,8 @@ export class UpdategroupdialogComponent implements OnInit {
 
   post(){
     var group= new groups(this.form.value.name,this.toppings.value,this.form.value.link,this.toppings2.value);
-    console.log(group)
-    console.log(this.form.value)
+    //console.log(group)
+    //console.log(this.form.value)
     
     this.request.putGroup(this.id.id,group).subscribe(
       response => {

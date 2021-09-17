@@ -27,7 +27,9 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.cookie.deleteAll('/dashboard');
     this.cookie.deleteAll('/');
-
+  }
+  home() {
+    this.router.navigate(['dashboard']);
   }
 
 }

@@ -35,7 +35,7 @@ export class TakeclassdialogComponent implements OnInit {
     var error: string = "";
     this.http.getUsers(this.data.rol, this.data.user).subscribe(
       result => {
-        console.log(this.cookie.get('username'), this.data.rol, result)
+        //console.log(this.cookie.get('username'), this.data.rol, result)
         for (let index = 0; index < result.length; index++) {
           //dentro del result puede venir el propio usuario que solicita la informacion
           //esta parte es un filtro manual
@@ -48,7 +48,7 @@ export class TakeclassdialogComponent implements OnInit {
                 lista.push(<User>arr[ind][1]);
                 
               }
-              console.log(result[index].lista);
+              //console.log(result[index].lista);
               for (let ind = 0; ind < lista.length; ind++) {
                 if (lista[ind].username == this.cookie.get('username')) {
                   aux.push(result[index]);
@@ -59,7 +59,7 @@ export class TakeclassdialogComponent implements OnInit {
 
             }
             catch {
-              console.log('hubo un error');
+              //console.log('hubo un error');
               error += result[index].first_name + " " + result[index].last_name + ",";
             }
           }
@@ -68,7 +68,7 @@ export class TakeclassdialogComponent implements OnInit {
           }
           
         }
-        console.log(aux);
+        //console.log(aux);
         this.dataSource = new MatTableDataSource(aux);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -82,7 +82,7 @@ export class TakeclassdialogComponent implements OnInit {
         }
       },
       error => {
-        console.log(error)
+        //console.log(error)
       });
     this.http.getGroups
   }
@@ -132,13 +132,13 @@ export class TakeclassdialogComponent implements OnInit {
             window.open(response.lista.form, "_blank");
             let lang2: Language = <Language>response.lista.classes[0];
             await this.delay(1000);
-            console.log(response.lista.classes[0].link);
-            console.log(lang2)
+            //console.log(response.lista.classes[0].link);
+            //console.log(lang2)
 
             window.open(lang2.link, "_blank");
 
           } else {
-            console.log(lang)
+            //console.log(lang)
             this._snackBar.open('This student isnt registered a class', '', {
               duration: 5000,
               horizontalPosition: 'center',

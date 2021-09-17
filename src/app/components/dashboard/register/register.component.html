@@ -1,11 +1,11 @@
+<div class="nav">
+    <app-navbar></app-navbar>
+</div>
 <div class="body">
-    <button mat-fab color="accent" (click)="home()" aria-label="Example icon button with a bookmark icon">
-        <mat-icon>home</mat-icon>
-      </button>
+    
     <div class="login">
         
         <form [formGroup]="form" *ngIf="!loading" (ngSubmit)="login()">
-            <img src="../../../assets/img/a.png" width="50%">
             <mat-form-field class="ancho" appearance="outline" color="primary" style="color: white;">
                 <mat-label style="color: whitesmoke;">First name</mat-label>
                 <input matInput formControlName="firstName" autocomplete="off">
@@ -55,7 +55,6 @@
 
             <br>
             <button class="ancho btn" mat-flat-button [disabled]="form.invalid" color="warn">Register</button>
-            <br><br>
         </form>
 
     </div>

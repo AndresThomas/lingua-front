@@ -63,10 +63,10 @@ export class GroupsComponent implements OnInit {
         this.dataSource = new MatTableDataSource(aux);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        console.log(aux)
+        //console.log(aux)//
       },
       error => {
-        console.log(error)
+        //console.log(error)
       }
     );
     this.form.reset();
@@ -99,7 +99,7 @@ export class GroupsComponent implements OnInit {
         });
       },
       error => {
-        console.log(error);
+        //console.log(error);
         this._snackBar.open('Oops something was wrong, please contact to support', '', {
           duration: 5000,
           horizontalPosition: 'center',

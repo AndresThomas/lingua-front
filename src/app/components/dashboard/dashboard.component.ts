@@ -45,8 +45,9 @@ export class DashboardComponent implements OnInit {
   getMyBooks() {
     this.http.getUser(this.cookie.get('id')).subscribe(
       request=>{
-        if(request.lista.groups != undefined){
-          window.open(request.lista.groups,"_blank");
+        //console.log(request);
+        if(request.lista.pay != undefined){
+          window.open(request.lista.pay,"_blank");
         }else{
           this._snackBar.open('This person dont have a payment link', '', {
             duration: 5000,
@@ -56,7 +57,7 @@ export class DashboardComponent implements OnInit {
         }
       }
       ,error=>{
-        console.log(error)
+        //console.log(error)
       }
     )
   }

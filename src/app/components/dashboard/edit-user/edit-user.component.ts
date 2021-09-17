@@ -59,7 +59,7 @@ export class EditUserComponent implements OnInit {
     
     this.is_admin = this.cookie.get('rol') == 'admin';
 
-    console.log(this.id.user)
+    //console.log(this.id.user)
   }
 
   keyPress(event: any) {
@@ -78,6 +78,7 @@ export class EditUserComponent implements OnInit {
     }else{
       rol=data.animalControl.name
     }
+    //console.log(data)
     let user = {
       first_name: data.firstName,
       last_name: data.lastName,
@@ -90,10 +91,11 @@ export class EditUserComponent implements OnInit {
         'people': data.people,//almacena profesores para alumnos o estudiantes para profosores
         'groups': data.groups,// almacena los grupos si pertenecen a alguno
         'form': data.form,//link del formulario
-        'classes':data.toppings
+        'classes':data.toppings,
+        'pay':data.pay
       }
     }
-    console.log(user)
+    //console.log(user)
     this.request.updateUser(user, this.id.id).subscribe(
       result => {
         this.message('The user was modified successfully');
@@ -124,13 +126,13 @@ export class EditUserComponent implements OnInit {
       phonenumber: [this.user.phone_number, Validators.compose(
         [Validators.maxLength(10), Validators.minLength(10), Validators.required,])],
       animalControl: [this.user.rol, Validators.required],
-      toppings: [this.user.lista.classes,Validators.required],
-      people: [this.user.lista.people,Validators.required],
-      form: [this.user.lista.form, Validators.required],
-      groups: [this.user.lista.groups, Validators.required],
+      toppings: [this.user.lista.classes,],
+      people: [this.user.lista.people,],
+      form: [this.user.lista.form, ],
+      groups: [this.user.lista.groups, ],
       pay:['',]
     });
-    console.log(this.form)
+    //console.log(this.form)
   }
 
 }

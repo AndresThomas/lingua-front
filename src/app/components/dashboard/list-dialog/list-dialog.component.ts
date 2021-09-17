@@ -75,10 +75,8 @@ export class ListDialogComponent implements OnInit {
     
     this.http.getUsers(this.data.rol,this.data.user).subscribe(
       result => {
-        for (let index = 0; index < result.length; index++) {
-          if(result[index].username != this.cookie.get('username')){
-            aux.push(result[index]);
-          }
+        for (let index = 0; index < result.length; index++) {          
+          aux.push(result[index]);
         } 
         this.students_list = [];
         this.students_list = aux;
@@ -87,7 +85,7 @@ export class ListDialogComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       },
       error => {
-        console.log(error)
+        //console.log(error)
       }
     );
   }

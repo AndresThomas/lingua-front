@@ -56,18 +56,18 @@ export class LanguagesComponent implements OnInit {
     var aux: Language[] = [];
     this.request.getLanguages().subscribe(
       result => {
-        console.log(result)
+        //console.log(result)//
 
         for (let index = 0; index < result.length; index++) {
           aux.push(result[index]);
-          console.log(result[index])
+          //console.log(result[index])
         }
         this.dataSource = new MatTableDataSource(aux);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       },
       error => {
-        console.log(error)
+        //console.log(error)
       }
     );
     
@@ -82,16 +82,14 @@ export class LanguagesComponent implements OnInit {
     }
   }
 
-  home() {
-    this.router.navigate(['dashboard']);
-  }
+  
 
   post() {
-    console.log(this.form)
-    console.log(this.toppings.value)
+    //console.log(this.form)
+    //console.log(this.toppings.value)
     this.request.postLanguage(this.form.value.language, this.toppings.value.first_name+" "+this.toppings.value.last_name, this.form.value.level, /*this.form.value.link,*/ this.toppings.value.username).subscribe(
       response => {
-        console.log(response);
+        //console.log(response);
         this._snackBar.open('Saved successfully', '', {
           duration: 5000,
           horizontalPosition: 'center',
@@ -99,7 +97,7 @@ export class LanguagesComponent implements OnInit {
         });
       },
       error => {
-        console.log(error);
+        //console.log(error);
         this._snackBar.open('Oops something was wrong, please contact to support', '', {
           duration: 5000,
           horizontalPosition: 'center',
