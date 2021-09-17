@@ -46,12 +46,15 @@ export class TakeclassdialogComponent implements OnInit {
               arr = Object.entries(result[index].lista.people)//parece ser un array
               for (let ind = 0; ind < arr.length; ind++) {
                 lista.push(<User>arr[ind][1]);
+                
               }
-
+              console.log(result[index].lista);
               for (let ind = 0; ind < lista.length; ind++) {
                 if (lista[ind].username == this.cookie.get('username')) {
                   aux.push(result[index]);
                 }
+                if (this.cookie.get('rol').toLowerCase() == 'admin')
+                  aux.push(result[index]);
               }
 
             }
@@ -60,13 +63,18 @@ export class TakeclassdialogComponent implements OnInit {
               error += result[index].first_name + " " + result[index].last_name + ",";
             }
           }
+          if(result[index].lista != '{language:example}'){
+            error += result[index].first_name + " " + result[index].last_name + ",";
+          }
+          
         }
+        console.log(aux);
         this.dataSource = new MatTableDataSource(aux);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
 
         if (error.length > 0 && this.cookie.get('rol') == 'admin') {
-          this._snackBar.open('This students have a problem with their info class: ' + error + ' please contact with the admin', '', {
+          this._snackBar.open('This users have a problem with their info class: ' + error + 'please configure thats user profiles', '', {
             duration: 5000,
             horizontalPosition: 'center',
             verticalPosition: 'bottom'
@@ -76,6 +84,7 @@ export class TakeclassdialogComponent implements OnInit {
       error => {
         console.log(error)
       });
+    this.http.getGroups
   }
 
 
@@ -88,8 +97,8 @@ export class TakeclassdialogComponent implements OnInit {
   }
 
   delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
   acept(user: User) {
 
@@ -103,8 +112,8 @@ export class TakeclassdialogComponent implements OnInit {
           arr = Object.entries(response.lista.classes);//parece ser un array
           for (let ind = 0; ind < arr.length; ind++) {
             let language: Language = <Language>arr[ind][1];
-            
-            if (language.teacher == user.first_name + " " + user.last_name && this.cookie.get('rol')=='student')
+
+            if (language.teacher == user.first_name + " " + user.last_name && this.cookie.get('rol') == 'student')
               lang.push(language);
             else
               lang.push(language);
@@ -121,11 +130,11 @@ export class TakeclassdialogComponent implements OnInit {
           }
           if (lang.length == 1) {
             window.open(response.lista.form, "_blank");
-            let lang2:Language =<Language> response.lista.classes[0];
+            let lang2: Language = <Language>response.lista.classes[0];
             await this.delay(1000);
             console.log(response.lista.classes[0].link);
             console.log(lang2)
-            
+
             window.open(lang2.link, "_blank");
 
           } else {

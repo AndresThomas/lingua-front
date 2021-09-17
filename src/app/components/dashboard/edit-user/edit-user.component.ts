@@ -50,6 +50,12 @@ export class EditUserComponent implements OnInit {
         this.peopleList = result;
       }
     )
+
+    this.request.getGroups().subscribe(
+      result=>{
+        this.groupList=result;
+      }
+    )
     
     this.is_admin = this.cookie.get('rol') == 'admin';
 
@@ -66,12 +72,17 @@ export class EditUserComponent implements OnInit {
 
 
   save(data: any) {
-
+    let rol;
+    if(data.animalControl.name == undefined){
+      rol=data.animalControl
+    }else{
+      rol=data.animalControl.name
+    }
     let user = {
       first_name: data.firstName,
       last_name: data.lastName,
       phone_number: data.phonenumber,
-      rol: data.animalControl.name,
+      rol: rol,
       username: data.username,
       password: data.password,
       email: data.email,
@@ -82,7 +93,7 @@ export class EditUserComponent implements OnInit {
         'classes':data.toppings
       }
     }
-    console.log(data)
+    console.log(user)
     this.request.updateUser(user, this.id.id).subscribe(
       result => {
         this.message('The user was modified successfully');
@@ -112,13 +123,14 @@ export class EditUserComponent implements OnInit {
       lastName: [this.user.last_name, Validators.required],
       phonenumber: [this.user.phone_number, Validators.compose(
         [Validators.maxLength(10), Validators.minLength(10), Validators.required,])],
-      animalControl: ['', Validators.required],
-      toppings: ['',],
-      people: ['',],
+      animalControl: [this.user.rol, Validators.required],
+      toppings: [this.user.lista.classes,Validators.required],
+      people: [this.user.lista.people,Validators.required],
       form: [this.user.lista.form, Validators.required],
       groups: [this.user.lista.groups, Validators.required],
       pay:['',]
     });
+    console.log(this.form)
   }
 
 }
