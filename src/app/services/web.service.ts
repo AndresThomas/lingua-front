@@ -9,8 +9,8 @@ import { Language, User, groups } from '../interfaces/interfaces';
 
 
 export class WebService {
-  //link = 'https://linguazone2.herokuapp.com/';
-  link = 'http://localhost:8000/'
+  link = 'https://linguazone2.herokuapp.com/';
+  //link = 'http://localhost:8000/'
   books = '';
   classLink='';
   list = '';
