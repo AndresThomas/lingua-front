@@ -6,7 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CookieService } from 'ngx-cookie-service';
-import { Language, User } from 'src/app/interfaces/interfaces';
+import { groups, Language, User } from 'src/app/interfaces/interfaces';
 import { WebService } from 'src/app/services/web.service';
 import { ClasschooserComponent } from '../classchooser/classchooser.component';
 
@@ -84,7 +84,24 @@ export class TakeclassdialogComponent implements OnInit {
       error => {
         //console.log(error)
       });
-    this.http.getGroups
+    this.http.getGroups().subscribe(
+      result =>{
+        let lista:groups[]=[];
+        for (let index = 0; index < result.length; index++) {
+          if(this.cookie.get('rol')== 'admin'){
+            lista = result;
+            console.log(result[index]);
+            index = result.length;
+            
+          }else{
+            console.log(result[index]);
+          }
+        }
+        this.groups = new MatTableDataSource(lista);
+        this.groups.sort = this.sort;
+        this.groups.paginator = this.paginator;
+      }
+    )
   }
 
 
@@ -160,8 +177,19 @@ export class TakeclassdialogComponent implements OnInit {
 
       }
     )
+  }
 
-
+  acept2(group:groups){
+    console.log(group);
+    if(group.link_clases.includes('https://')){
+      window.open(group.link_clases,'_blank');
+    }else{
+      this._snackBar.open("this group don't have any link", '', {
+        duration: 5000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      });
+    }
   }
 
 }
